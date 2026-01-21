@@ -14,14 +14,14 @@ def extract_transactions(data, source_file="File1"):
     
     # Use default if header not found
     if boundary is None:
-        boundary = 60
+        boundary = 60 #I manually count to position from the file
     
     # Extract transactions
     for line in lines:
         # Only process lines starting with 111-1
         if not line.strip().startswith('111-1'):
             continue
-        
+
         # Get date if present
         date_match = re.search(r'(\d{1,2}/\d{1,2}/\d{2})', line)
         if date_match:
@@ -35,7 +35,7 @@ def extract_transactions(data, source_file="File1"):
             amount = float(match.group(1).replace(',', ''))
             code = match.group(2)
             
-            # Determine DEBIT or CREDIT
+            # Determine if transaction type is DEBIT or CREDIT
             if match.start() < boundary:
                 trans_type = 'DEBIT'
             else:
@@ -47,7 +47,6 @@ def extract_transactions(data, source_file="File1"):
                 'Transaction Code': code,
                 'Transaction Type': trans_type,
                 'Amount': f"{amount:.2f}",
-                'Source File': source_file
             })
     
     return transactions
