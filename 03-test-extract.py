@@ -1,4 +1,4 @@
-#The following script has been polished by Clude
+#The following script has been polished by Claude
 
 test_transactions = extract_transactions(sample_data, "Test")                                             
 test_df = pd.DataFrame(test_transactions)
