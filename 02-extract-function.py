@@ -1,4 +1,4 @@
-#The following script has been polished by Clude
+#The following script has been polished by Claude
 
 def extract_transactions(data, source_file="File1"):
     transactions = []
