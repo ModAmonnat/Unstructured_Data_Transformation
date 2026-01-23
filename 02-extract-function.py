@@ -52,3 +52,11 @@ def extract_transactions(data, source_file="File1"):
             })
     
     return transactions
+
+
+# Filtering Rules:
+### Line must start with "111-1"
+### Must have date OR use previous date (continuation lines)
+### Must have amount+code pairs (not just amounts)
+### Position < boundary = DEBIT, ≥ boundary = CREDIT
+
